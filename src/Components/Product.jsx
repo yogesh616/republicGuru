@@ -146,7 +146,7 @@ function Product() {
               </div>
             </div>
 
-        <div className='w-full bg-gray-300 h-[1px]' />
+        <div className='w-full bg-gray-300 h-[1px] mt-4 sm:mt-8' />
 
         <div className="p-4 w-full gap-5 flex flex-col sm:flex-row">
           <div className="flex flex-col gap-4 sm:w-1/3">
