@@ -208,42 +208,42 @@ const products = [
   },
   {
     name: "Swiggy",
-    offer: "Flat 5% off",
+    offer: "Flat 8% off",
     code: "NYK5",
     
     image: Swiggy
   },
   {
     name: "Pizza Hut",
-    offer: "Flat 5% off",
+    offer: "Flat 6% off",
     code: "NYK5",
     
     image: PizzaHutt
   },
   {
     name: "KFC",
-    offer: "Flat 5% off",
+    offer: "Flat 2% off",
     code: "NYK5",
     
     image: Kfc
   },
   {
     name: "Eat Sure",
-    offer: "Flat 5% off",
+    offer: "Flat 7% off",
     code: "NYK5",
     
     image: EatSure
   },
   {
     name: "Dominos",
-    offer: "Flat 5% off",
+    offer: "Flat 2% off",
     code: "NYK5",
     
     image: Dominos
   },
   {
     name: "Shoppers Stop",
-    offer: "Flat 5% off",
+    offer: "Flat 15% off",
     code: "NYK5",
     
     image: ShoppersStop
