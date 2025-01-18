@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { useProduct } from '../Context/ProductContext';
@@ -58,6 +58,13 @@ function Product() {
     setFaqOpen((prev) => prev.map((item, i) => (i === index ? !item : item)));
   };
 
+  const productRef = useRef(null);
+  useEffect(() => {
+    if (productRef.current) {
+      productRef.current.scrollIntoView({ behavior:'smooth', block: 'center' });
+    }
+  }, [])
+
   return (
     <div className="flex flex-col min-h-screen w-full">
       <Header />
@@ -68,19 +75,28 @@ function Product() {
             <span className="text-pink-500">ByBit</span>
           </nav>
 
-          <div className="rounded-lg ps-10">
+          {
+            selectedProduct && (
+              <div ref={productRef} className="rounded-lg ps-10">
             <div className="flex flex-col sm:flex-row items-center  gap-4">
               <img
-                src={Bigbasket}
+                src={selectedProduct.image}
                 alt="ByBit Logo"
                 className="w-48 h-48 sm:w-52 sm:h-52 object-contain"
               />
               <div className="flex flex-col  sm:items-start">
                 <h2 className="text-red-500 font-bold text-lg">Jan 2025</h2>
                 <h1 className="text-2xl font-bold mt-1">
-                  $1,025 USDT Bybit Referral Code and Promo Code: 27347
+                 {selectedProduct.name}
                 </h1>
-                <div className="flex flex-col sm:ml-4">
+               {
+                selectedProduct?.offer ? (
+                  <div className="flex flex-col sm:ml-4">
+                  
+                  <p className="text-gray-600 text-sm">{selectedProduct.offer}</p>
+                </div>
+                ) : (
+                  <div className="flex flex-col sm:ml-4">
                   <p className="text-gray-600 text-sm">
                     ByBit total of active coupons today: <strong>4</strong>. The date of the last update Dec 30, 2024.
                   </p>
@@ -88,6 +104,8 @@ function Product() {
                   <p className="text-gray-600 text-sm">You can use it to get the biggest discount & deal & free shipping on ByBit,</p>
                   <p className="text-gray-600 text-sm">100% verification of each Coupon & Deal.</p>
                 </div>
+                )
+               }
                 <div className="flex flex-wrap justify-start gap-2 mt-6 text-gray-700">
                   <p className="flex items-center gap-1 font-medium">
                     <span className="text-pink-500">⚡</span> <strong>04</strong> Offers Available
@@ -110,6 +128,8 @@ function Product() {
 
            
           </div>
+            )
+          }
         </div>
 
         <div className="flex mt-6 gap-3 sm:gap-4 w-full flex-col sm:flex-row items-center  sm:ps-10 h-12">
