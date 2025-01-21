@@ -3,7 +3,8 @@ import Header from './Header';
 import Footer from './Footer';
 import { useProduct } from '../Context/ProductContext';
 import { useNavigate } from 'react-router-dom';
-import { Bigbasket } from '../EcommerseImages/EcommerseImages'
+import { Bigbasket } from '../EcommerseImages/EcommerseImages'; // Ensure Bigbasket is imported correctly
+import './product.css';
 
 function Product() {
   const { selectedProduct, setSelectedProduct } = useProduct();
@@ -28,211 +29,271 @@ function Product() {
       title: "Up To $1050 Extra ByBit Referral",
       code: "27347",
       uses: 9209,
-      image: Bigbasket
+      image: Bigbasket,
     },
     {
       id: 2,
       title: "Adopt bbSOL for chance at $1.2M Prizepool",
-      description: "Users must register for the event via the Adopt Now button on the event page to be eligible for rewards",
+      description:
+        "Users must register for the event via the Adopt Now button on the event page to be eligible for rewards",
       uses: 9209,
-      image: Bigbasket
+      image: Bigbasket,
     },
     {
       id: 3,
       title: "Up To 100% Fee Rebates On Copy Trading",
       uses: 701,
-      image: Bigbasket
+      image: Bigbasket,
     },
   ];
 
   const faqs = [
     {
       question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat, diam a efficitur pellentesque.",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat, diam a efficitur pellentesque.",
     },
   ];
 
   const [faqOpen, setFaqOpen] = useState(Array(faqs.length).fill(false));
 
   const toggleFaq = (index) => {
-    setFaqOpen((prev) => prev.map((item, i) => (i === index ? !item : item)));
+    setFaqOpen((prev) =>
+      prev.map((item, i) => (i === index ? !item : item))
+    );
   };
 
   const productRef = useRef(null);
   useEffect(() => {
     if (productRef.current) {
-      productRef.current.scrollIntoView({ behavior:'smooth', block: 'center' });
+      productRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  }, [])
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen w-full">
       <Header />
-      <main className="flex-grow w-full sm:mt-[88px] py-10 ">
-        <div className="min-h-5/6 px-4 py-4 pb-8 sm:pb-20 sm:px-10 bg-gray-100">
-          <nav className="text-gray-500 text-sm mb-8 ps-10">
-            Home &nbsp; | &nbsp; Blockchain & Web3 &nbsp; | &nbsp;
-            <span className="text-pink-500">ByBit</span>
-          </nav>
+      <main className="flex-grow w-full sm:mt-[50px]">
+        {/* Product Section */}
+        <div
+          className="min-h-[45vh] bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://shipthedeal.com/build/assets/body_bg.9cc5b477.jpg')`,
+          }}
+        >
+          <div className="p-8">
+            <nav className="text-gray-600 text-lg mb-4">
+              <span>Home</span> &gt;{' '}
+              <span>Clothing & Accessories</span> &gt;{' '}
+              <span className="text-[#05205c]">Adidas</span>
+            </nav>
 
-          {
-            selectedProduct && (
-              <div ref={productRef} className="rounded-lg ps-10">
-            <div className="flex flex-col sm:flex-row items-center  gap-4">
-              <img
-                src={selectedProduct.image}
-                alt="ByBit Logo"
-                className="w-48 h-48 sm:w-52 sm:h-52 object-contain"
-              />
-              <div className="flex flex-col  sm:items-start">
-                <h2 className="text-red-500 font-bold text-lg">Jan 2025</h2>
-                <h1 className="text-2xl font-bold mt-1">
-                 {selectedProduct.name}
-                </h1>
-               {
-                selectedProduct?.offer ? (
-                  <div className="flex flex-col sm:ml-4">
-                  
-                  <p className="text-gray-600 text-sm">{selectedProduct.offer}</p>
+            <div className="grid grid-cols-[100px_1fr] lg:grid-cols-[188px_1fr_358px] gap-y-2 gap-x-4 lg:gap-x-10 lg:mt-8 lg:mb-7 mt-3 mb-2 sm:px-4 py-10">
+              <div
+                style={{ cursor: 'pointer' }}
+                className="lg:row-[1/span_2] lg:w-[188px] lg:h-[188px] w-[90px] h-[90px] p-3 lg:p-6 flex items-center justify-center bg-white rounded-md overflow-hidden"
+              >
+                {selectedProduct?.image && (
+                  <img
+                    src={selectedProduct.image}
+                    alt="Adidas Logo"
+                    width="140"
+                    height="140"
+                    decoding="async"
+                  />
+                )}
+              </div>
+              <h1 className="text-[18px] md:text-[32px] leading-tight text-gradient flex items-center">
+                Adidas Coupons And Discount Codes | Jan. 2025
+              </h1>
+              <div className="max-lg:col-[1/3] lg:row-[2/4] xl:max-w-[670px]">
+                <div className="hidden lg:block text-justify text-base mb-2 opacity-70">
+                  Adidas total of active coupons today: 1. The date of the last
+                  update Jan 21, 2025; The best active coupon: -. You can use it
+                  to get the biggest discount &amp; Deal &amp; free shipping on
+                  Adidas, 100% verification of each Coupon &amp; Deal.
                 </div>
-                ) : (
-                  <div className="flex flex-col sm:ml-4">
-                  <p className="text-gray-600 text-sm">
-                    ByBit total of active coupons today: <strong>4</strong>. The date of the last update Dec 30, 2024.
-                  </p>
-                  <p className="text-gray-600 text-sm">The best active coupon: 1050%.</p>
-                  <p className="text-gray-600 text-sm">You can use it to get the biggest discount & deal & free shipping on ByBit,</p>
-                  <p className="text-gray-600 text-sm">100% verification of each Coupon & Deal.</p>
-                </div>
-                )
-               }
-                <div className="flex flex-wrap justify-start gap-2 mt-6 text-gray-700">
-                  <p className="flex items-center gap-1 font-medium">
-                    <span className="text-pink-500">⚡</span> <strong>04</strong> Offers Available
-                  </p>
-                  <p className="flex items-center gap-1 font-medium">
-                    <span className="text-pink-500">🎟️</span> <strong>03</strong> Coupon Code(s)
-                  </p>
-                  <p className="flex items-center gap-1 font-medium">
-                    <span className="text-pink-500">💰</span> <strong>38</strong> Sales
-                  </p>
+                <div className="hidden lg:flex text-[15px] md:text-[18px] opacity-70 gap-x-5 flex-wrap">
+                  <div className="whitespace-nowrap">
+                    <span className="text-[#05205C] font-bold">1</span> Offers
+                    Available
+                  </div>
+                  <div className="whitespace-nowrap">
+                    <span className="text-[#05205C] font-bold">0</span> Coupon
+                    Code(s)
+                  </div>
+                  <div className="whitespace-nowrap">
+                    <span className="text-[#05205C] font-bold">53</span> Sales
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col items-center justify-between mt-4 ">
-                
-                <button className="bg-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-pink-600 transition">
-                  Go to ByBit
-                </button>
+              <div className="sm:flex max-lg:col-[1/3] lg:row-[1/span_2] hidden items-center">
+                <a
+                  rel="nofollow"
+                  href="https://wct-2.com/r?data=0xF7PJiHrxzTjclI42BWv3BJ1YCHrwAKfMrYuszY9gDZzKmL02BJ5cBHvgzLHgDWLgAZzKmLyKmLe0mLmhC0rhAIOJiSjxDIWIiPvZBuT2DIOJiKLwDIWIi5etnXudn3mZnX4In1atnZiJmYiJi6iczPn2zIWIi1qtn5etnXudn3mZnXiIoIqwAZjYE&amp;afflink=https%3A%2F%2Fadidas.njih.net%2FKnzLz"
+                  className="btn btn-dark px-8 py-4 md:py-[18px] lg:w-full max-xs:w-full block text-lg"
+                >
+                  Go To Adidas
+                </a>
               </div>
             </div>
-
-           
           </div>
-            )
-          }
         </div>
 
-        <div className="flex mt-6 gap-3 sm:gap-4 w-full flex-col sm:flex-row items-center  sm:ps-10 h-12">
-            <div className='flex items-center gap-3'>
-            {["Total Offers 4", "Coupons Code 3", "Promotion 1"].map((text, i) => (
-                <div key={i} className="border-[1px] text-xs  sm:text-sm text-gray-500 border-gray-200 px-4 py-2 rounded-md font-normal whitespace-nowrap">
-                  {text.split(" ").slice(0, -1).join(" ")} <strong className="text-black">{text.split(" ").pop()}</strong>
-                </div>
-              ))}
-            </div>
-             <div className='flex items-center gap-4'>
-             <div className="flex sm:flex-row flex-col  gap-4 text-gray-700 ">
-                {[{ label: "Average saving:", value: "$10.80" }, { label: "Coupons available:", value: "02" }, { label: "Best coupon:", value: "$50" }, { label: "Last updated:", value: "Dec 30, 2024" }]
-                  .map(({ label, value }, i) => (
-                    <p key={i} className="text-xs sm:text-base whitespace-nowrap"><strong>{label}</strong> <span>{value}</span></p>
-                  ))}
-              </div>
-             </div>
-            </div>
-
-            <div className="mt-28 flex flex-col sm:flex-row items-center justify-start gap-3 ms-3">
-              <h3 className="text-lg font-bold mr-6">ByBit Discount Tips</h3>
-              <div className="flex justify-start sm:items-center mr-8 w-full sm:w-8/12  h-16 rounded-md sm:justify-between sm:gap-10 mt-2 bg-pink-100">
-                {[1, 2, 3].map((step, index) => (
-                  <div key={index} className="bg-pink-100 px-4 py-2 rounded-md font-medium flex items-center gap-2">
-                    
-                    <span className="bg-pink-500 text-white w-6 h-6 flex items-center justify-center rounded-full">
-                      {step}
-                    </span>{" "}Step
-                  </div>
-                
-                ))}
-                 
-              </div>
-            </div>
-
-        <div className='w-full bg-gray-300 h-[1px] mt-4 sm:mt-8' />
-
-        <div className="p-4 w-full gap-5 flex flex-col sm:flex-row">
-          <div className="flex flex-col gap-4 sm:w-1/3">
-            <div className="flex gap-5">
-              <button className="border-[1px] text-xs text-pink-500 border-pink-300 px-4 py-3 rounded-md font-bold">Related Store</button>
-              <button className="border-[1px] text-xs text-pink-500 border-pink-300 px-4 py-3 rounded-md font-bold">Top Stores</button>
-            </div>
-            <div className="bg-zinc-900 text-white p-6 rounded-lg mb-6 max-w-72 max-h-64 flex flex-col items-center justify-start">
-              <h2 className="text-lg font-bold">Submit a Coupon</h2>
-              <p className="">Have a great ByBit code we are missing? Share it with your fellow Bargain Shoppers</p>
-              <button className="bg-white text-black px-10 font-semibold py-2 mt-6 rounded">Submit Coupon</button>
-            </div>
-            <div className="flex flex-col border-[1px] px-3 py-2 max-w-72">
-              {['ByBit Information', 'Super6Bybit: Celebrating 6 Years With Bybit', 'Best ByBit Referral Code', 'How to Redeem a Bybit Referral Code', 'How ShipTheDeal Finds the Best Bybit Referral Codes', 'Here Are Some Useful Resources to Find Bybit Referral Codes'].map((text, index) => (
-                <div key={index}>
-                  <div className="flex justify-between gap-4 items-center py-2">
-                    <p className="text-sm font-medium text-gray-900">{text}</p>
-                    <i className="fa-solid fa-chevron-down text-gray-900 text-xs"></i>
-                  </div>
-                  <hr />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="sm:w-5/6">
-            <div className="space-y-4">
-              {coupons.map((coupon) => (
-                <div key={coupon.id} className="border p-4 py-8 rounded-sm flex flex-col sm:flex-row items-start sm:items-center justify-between relative">
-                  <div className='absolute flex gap-1 top-2 left-0'>
-                    <p className='bg-orange-500 text-[8px] text-white px-2'>New</p>
-                    <p className='bg-green-400 text-[8px] text-white px-2'>Verified</p>
-                  </div>
-                  <div className='flex gap-5'>
-                    <div >
-                      <img className='rounded-md w-20'  src={coupon.image} alt="" />
+        {/* Relative Section */}
+        <div className="bg-[#F6F8FE] ">
+          <div className="container max-lg:max-w-none ">
+            <div className="grid sm:grid-cols-[306px_1fr] grid-rows-[auto_1fr] grid-flow-dense gap-y-6 gap-x-5 lg:gap-x-8 mt-4 lg:mt-8 mb-7 py-0 md:py-5 lg:py-11">
+              {/* Right Section */}
+              <div className="sm:col-[2/3] sm:row-[1/3]">
+                <div className="flex gap-[22px] flex-wrap mt-4 lg:mt-0">
+                  {/* Adidas Signup */}
+                  <div className="border border-gray-200 rounded-2xl bg-white p-3 sm:px-3 sm:py-3 w-full flex flex-wrap gap-5 items-center position-relative min-h-150 ">
+                    <div className="hidden sm:block grow-0 shrink-0 w-[100px] h-[100px] p-2 items-center justify-center max-xs:-mb-4 text-prim-light text-2xl">
+                      <img
+                        id="getCode23_image"
+                        src="https://shipthedeal.com/assets/uploads/store/adidas-coupon-20233.png"
+                        alt="15% Off With Email Signup"
+                      />
                     </div>
-                   <div>
-                   <h3 className="font-bold">{coupon.title}</h3>
-                    {coupon.description && (
-                      <p className="text-xs sm:text-sm font-semibold text-pink-400 mt-1 ">{coupon.description}</p>
-                    )}
-                    {coupon.code && <p className="text-sm font-semibold text-pink-400 mt-1 ">Use Code: {coupon.code}</p>}
-                   </div>
-                  
+                    <div className="flex-1 basis-[300px] justify-evenly">
+                      <div
+                        id="getCode23_name"
+                        className="font-bold text-xl mb-[10px]"
+                      >
+                        15% Off With Email Signup
+                      </div>
+                      <div className="flex-row flex flex-wrap">
+                        <div className="flex flex-column coupon-badge items-center gap-1 text-xs">
+                          <img
+                            style={{ width: '30px' }}
+                            src="https://a.slack-edge.com/production-standard-emoji-assets/14.0/google-medium/1f64c@2x.png"
+                            alt="15% Off With Email Signup Best Coupon"
+                          />
+                          <span className='font-[400]'>Best Coupon</span>
+                        </div>
+                      </div>
+
+                      <div
+                        id="getCode23_description"
+                        className="uppercase text-prim-light mb-[10px]"
+                      ></div>
+                      <span>35 uses</span> |{' '}
+                      <span className="uppercase text-prim-exlight">
+                        <span id="getCode23_storename">Adidas</span> coupons
+                      </span>
+                    </div>
+                    <span className="hidden" id="getCode23_link">
+                      https://adidas.njih.net/KnzLz
+                    </span>
+                    <div
+                      className="btn grow-1 shrink-0 basis-[202px] text-[14px] px-4 py-3 max-xs:basis-full bg-none bg-prim-dark"
+                      data-target="#getCode23"
+                    >
+                      Get Deal
+                    </div>
                   </div>
-                  <div className='flex flex-col items-center sm:items-end'>
-                  <button className="bg-pink-500 text-white rounded-lg px-6 py-2 mt-4 sm:divmt-0 hover:bg-pink-600">Show Code</button>
-                  <p className="text-xs whitespace-nowrap text-gray-500 mt-2">{coupon.uses} uses left | ByBit Coupons</p>
+                  {/* Adidas Information */}
+                  <div className="max-w-[93vw] content border border-gray-200 rounded-2xl bg-white py-2 lg:py-4 px-4 lg:px-7 my-9">
+                    <h2 className="h1">Adidas Information</h2>
+                    <p>
+                      Welcome to our Adidas coupon and promo code page. Below
+                      you’ll find everything you need to know about how to save
+                      on your online order at Adidas.
+                    </p>
                   </div>
-                  
-                  
                 </div>
-              ))}
-            </div>
-            <div className="mt-10 space-y-5">
-              {faqs.map((faq, index) => (
-                <div key={index}>
-                  <div className="flex items-center justify-between gap-4 py-4 cursor-pointer" onClick={() => toggleFaq(index)}>
-                    <h4 className="text-lg font-semibold">{faq.question}</h4>
-                    <i className={`fa-solid ${faqOpen[index] ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+              </div>
+              {/* Left Section */}
+              <div className="sm:col-[1/2] sm:row-[1/2] flex flex-col gap-y-6">
+                {/* Rating Div */}
+                <div className="border border-gray-200 rounded-2xl bg-white py-6 px-7">
+                  <div className="text-lg font-medium text-prim">
+                    You rated Adidas!
                   </div>
-                  {faqOpen[index] && <p className="text-sm text-gray-600">{faq.answer}</p>}
-                  <hr className="my-3" />
+                  <div className="text-lg opacity-80 my-2">
+                    Average rating: 2.4 of 5
+                  </div>
+                  <div className="flex justify-between">
+                    <div className="flex gap-1">
+                      <img
+                        src=" https://shipthedeal.com/build/assets/star.3fb9470e.svg "
+                        alt=""
+                      />
+                      <img
+                        src=" https://shipthedeal.com/build/assets/star.3fb9470e.svg "
+                        alt=""
+                      />
+                      <img
+                        src=" https://shipthedeal.com/build/assets/nostar.8815b900.svg "
+                        alt=""
+                      />
+                      <img
+                        src=" https://shipthedeal.com/build/assets/nostar.8815b900.svg "
+                        alt=""
+                      />
+                      <img
+                        src=" https://shipthedeal.com/build/assets/nostar.8815b900.svg "
+                        alt=""
+                      />
+                    </div>
+                    <span className="text-lg opacity-80">(5 votes)</span>
+                  </div>
                 </div>
-              ))}
+                {/* Submit Coupon Div */}
+                <div className="border border-gray-200 rounded-2xl bg-[#abfbed] py-4 lg:py-5 px-2 lg:px-6 faqs-left-sidebar">
+                  <div>
+                    Have a great Adidas code we are missing? Share it with your
+                    fellow Bargain Shoppers!
+                  </div>
+                  <div className="flex flex-col mt-4">
+                    <div
+                      id=""
+                      data-te-toggle="modal"
+                      data-te-target="#login"
+                      className="btn grow-1 shrink-0 text-[14px] px-4 py-3 max-xs:basis-full"
+                    >
+                      SUBMIT A COUPON
+                    </div>
+                  </div>
+                </div>
+                {/* Offer & Promotion */}
+                <div className="border border-gray-200 rounded-2xl bg-white py-4 px-7">
+                  <ul>
+                    <li className="border-b border-gray-200 last:border-b-0 flex justify-between py-[17px]">
+                      Total Offers
+                      <span className="text-[#05205C] font-medium">1</span>
+                    </li>
+                    <li className="border-b border-gray-200 last:border-b-0 flex justify-between py-[17px]">
+                      Promotion
+                      <span className="text-[#05205C] font-medium">1</span>
+                    </li>
+                  </ul>
+                </div>
+                {/* Discount */}
+                <div className="border border-gray-200 rounded-2xl bg-white py-4 px-7">
+                  <ul>
+                    <li className="flex justify-between py-[13px]">
+                      <span>💰 Average saving:</span>
+                      <span className="text-[#05205C] font-medium">$9.90</span>
+                    </li>
+                    <li className="flex justify-between py-[13px]">
+                      <span>✅ Coupons available:</span>
+                      <span className="text-[#05205C] font-medium"></span>
+                    </li>
+                    <li className="flex justify-between py-[13px]">
+                      <span>🙌 Best coupon:</span>
+                      <span className="text-[#05205C] font-medium">-</span>
+                    </li>
+                    <li className="flex justify-between py-[13px]">
+                      <span>⏰ Last updated:</span>
+                      <span className="text-[#05205C] font-medium">
+                        Jan 21, 2025
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
