@@ -112,7 +112,7 @@ const Header = () => {
                className="max-w-full h-auto rounded-lg" 
                src={logo} 
                alt="Logo" 
-               style={{ width: '160px', maxWidth: '100%' }} 
+               style={{ width: '145px', maxWidth: '100%' }} 
             />
           ) : (
              <span>Republic Guru</span>
@@ -189,12 +189,12 @@ const Header = () => {
       </header>
 
       {/* Categories & Navigation */}
-      <div className="hidden bg-[#e5e7eb] md:flex  text-balck p-4 justify-center">
-        <div className="flex justify-around items-center gap-10 w-[70vw]">
+      <div className="hidden bg-[#e5e7eb] bg-[#ffd1dc] md:flex  text-balck p-4 justify-center">
+        <div className="flex justify-around items-center gap-10 w-[70vw] ">
           {categories.map((category, index) => (
             <div key={index} className="relative dropdown">
               <button
-                className="relative text-balck cursor-pointer text-lg hover:text-brown-300 transition"
+                className="relative text-gray-700  cursor-pointer text-lg hover:text-brown-300 transition"
                 onMouseEnter={() => handleMouseEnter(index)} // Show dropdown
                 onMouseLeave={handleMouseLeave}
               >
@@ -206,7 +206,7 @@ const Header = () => {
                     <a
                       key={subIndex}
                       href={sub.url}
-                      className="block p-2 hover:bg-gray-200 rounded-md"
+                      className="block p-2 hover:bg-[#ffd1dc] rounded-md "
                     >
                       {sub.name}
                     </a>
