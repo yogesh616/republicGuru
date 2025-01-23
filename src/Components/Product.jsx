@@ -59,7 +59,7 @@ function Product() {
   return (
     <div  ref={topRef} className="flex flex-col min-h-screen w-full">
       <Header />
-      <main className="flex-grow w-full sm:mt-28">
+      <main className="flex-grow w-full sm:mt-36">
         {/* Product Section */}
         <div
           className="min-h-[45vh] bg-cover bg-center"
