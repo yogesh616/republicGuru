@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect } from "react";
 import logo from '../assets/logo/logo.jpeg'
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null); // Tracks which category dropdown is open
   const [dropdownTimeout, setDropdownTimeout] = useState(null); // Tracks timeout for closing dropdown
   const [storeDropdownVisible, setStoreDropdownVisible] = useState(false); // App dropdown state
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile side drawer
-
+  const navigate = useNavigate();
   // Categories and Subcategories Data
   const categories = [
     {
@@ -104,13 +105,14 @@ const Header = () => {
       {/* Navbar */}
       <header className="text-white  p-3 bg-[#19141a] bg-white flex items-center justify-between">
         {/* Logo */}
-        <div className="text-2xl font-bold">
+        <div className="text-2xl font-bold cursor-pointer"
+        onClick={() => navigate('/')}>
           {logo ? (
              <img 
                className="max-w-full h-auto rounded-lg" 
                src={logo} 
                alt="Logo" 
-               style={{ width: '135px', maxWidth: '100%' }} 
+               style={{ width: '140px', maxWidth: '100%' }} 
             />
           ) : (
              <span>Republic Guru</span>
