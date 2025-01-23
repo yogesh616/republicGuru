@@ -112,7 +112,7 @@ const Header = () => {
                className="max-w-full h-auto rounded-lg" 
                src={logo} 
                alt="Logo" 
-               style={{ width: '140px', maxWidth: '100%' }} 
+               style={{ width: '160px', maxWidth: '100%' }} 
             />
           ) : (
              <span>Republic Guru</span>

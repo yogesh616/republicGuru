@@ -59,7 +59,7 @@ function Product() {
   return (
     <div  ref={topRef} className="flex flex-col min-h-screen w-full">
       <Header />
-      <main className="flex-grow w-full sm:mt-28">
+      <main className="flex-grow w-full sm:mt-36">
         {/* Product Section */}
         <div
           className="min-h-[45vh] bg-cover bg-center"
@@ -89,7 +89,7 @@ function Product() {
                   />
                 )}
               </div>
-              <h1 className="text-[18px] md:text-[32px] leading-tight text-gradient flex items-center">
+              <h1 className="text-[18px] md:text-[32px] leading-tight text-gradient flex items-center ">
                 {selectedProduct.name} Coupons And Discount Codes | {formattedDate}
               </h1>
               <div className="max-lg:col-[1/3] lg:row-[2/4] xl:max-w-[670px]">
