@@ -9,6 +9,14 @@ import './product.css';
 function Product() {
   const { selectedProduct, setSelectedProduct } = useProduct();
   const navigate = useNavigate();
+  const [formattedDate, setFormattedDate] = useState(null);
+
+  useEffect(() => {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    setFormattedDate(today.toLocaleDateString('en-US', options));
+    
+  }, []);
 
   useEffect(() => {
     if (!selectedProduct) {
@@ -27,13 +35,21 @@ function Product() {
 
   
   
-
+  const topRef = useRef(null);
   const productRef = useRef(null);
   useEffect(() => {
-    if (productRef.current) {
-      productRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (topRef.current) {
+      // Scroll to the top-level div when the page loads
+      topRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
+
+  useEffect(() => {
+    if (productRef.current && selectedProduct) {
+      productRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [selectedProduct]);
+
 
 
   if (!selectedProduct) {
@@ -41,7 +57,7 @@ function Product() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div  ref={topRef} className="flex flex-col min-h-screen w-full">
       <Header />
       <main className="flex-grow w-full sm:mt-28">
         {/* Product Section */}
@@ -74,12 +90,12 @@ function Product() {
                 )}
               </div>
               <h1 className="text-[18px] md:text-[32px] leading-tight text-gradient flex items-center">
-                {selectedProduct.name} Coupons And Discount Codes | Jan. 2025
+                {selectedProduct.name} Coupons And Discount Codes | {formattedDate}
               </h1>
               <div className="max-lg:col-[1/3] lg:row-[2/4] xl:max-w-[670px]">
                 <div className="hidden lg:block text-justify text-base mb-2 opacity-70">
                   {selectedProduct.name} total of active coupons today: 1. The date of the last
-                  update Jan 21, 2025; The best active coupon: -. You can use it
+                  update {formattedDate}; The best active coupon: -. You can use it
                   to get the biggest discount &amp; Deal &amp; free shipping on
                   {selectedProduct.name}, 100% verification of each Coupon &amp; Deal.
                 </div>
@@ -101,7 +117,7 @@ function Product() {
                 <a
                   rel="nofollow"
                   href="https://wct-2.com/r?data=0xF7PJiHrxzTjclI42BWv3BJ1YCHrwAKfMrYuszY9gDZzKmL02BJ5cBHvgzLHgDWLgAZzKmLyKmLe0mLmhC0rhAIOJiSjxDIWIiPvZBuT2DIOJiKLwDIWIi5etnXudn3mZnX4In1atnZiJmYiJi6iczPn2zIWIi1qtn5etnXudn3mZnXiIoIqwAZjYE&amp;afflink=https%3A%2F%2Fadidas.njih.net%2FKnzLz"
-                  className="btn btn-dark px-8 py-4 md:py-[18px] lg:w-full max-xs:w-full block text-lg bg-pink-500"
+                  className="btn btn-dark px-8 py-4 md:py-[18px] lg:w-full max-xs:w-full block text-lg bg-gradient-to-r from-[#0652c5] to-[#d4418e] "
                 >
                   Go To {selectedProduct.name}
                 </a>
@@ -158,7 +174,7 @@ function Product() {
                       https://adidas.njih.net/KnzLz
                     </span>
                     <div
-                      className="btn grow-1 shrink-0 basis-[202px] text-[14px] px-4 py-3 max-xs:basis-full  bg-pink-500"
+                      className="btn grow-1 shrink-0 basis-[202px] text-[14px] px-4 py-3 max-xs:basis-full  bg-gradient-to-r from-[#0652c5] to-[#d4418e] "
                       data-target="#getCode23"
                     >
                       Get Deal
@@ -205,7 +221,7 @@ function Product() {
                       https://adidas.njih.net/KnzLz
                     </span>
                     <div
-                      className="btn grow-1 shrink-0 basis-[202px] text-[14px] px-4 py-3 max-xs:basis-full  bg-pink-500"
+                      className="btn grow-1 shrink-0 basis-[202px] text-[14px] px-4 py-3 max-xs:basis-full  bg-gradient-to-r from-[#0652c5] to-[#d4418e] "
                       data-target="#getCode23"
                     >
                       Get Deal
@@ -358,8 +374,8 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                     <span className="text-lg opacity-80">(5 votes)</span>
                   </div>
                 </div>
-                {/* Submit Coupon Div */}
-                <div className="border border-gray-200 rounded-2xl bg-[#abfbed] py-4 lg:py-5 px-2 lg:px-6 faqs-left-sidebar">
+                {/* Submit Coupon Div will be hidden */}
+                <div className=" hidden border border-gray-200 rounded-2xl bg-[#abfbed] py-4 lg:py-5 px-2 lg:px-6 faqs-left-sidebar">
                   <div>
                     Have a great {selectedProduct.name} code we are missing? Share it with your
                     fellow Bargain Shoppers!
@@ -369,7 +385,7 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                       id=""
                       data-te-toggle="modal"
                       data-te-target="#login"
-                      className="btn grow-1 shrink-0 text-[14px] px-4 py-3 max-xs:basis-full bg-pink-500"
+                      className="btn grow-1 shrink-0 text-[14px] px-4 py-3 max-xs:basis-full bg-gradient-to-r from-[#0652c5] to-[#d4418e] "
                     >
                       SUBMIT A COUPON
                     </div>
@@ -406,7 +422,7 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                     <li className="flex justify-between py-[13px]">
                       <span>⏰ Last updated:</span>
                       <span className="text-[#05205C] font-medium">
-                        Jan 21, 2025
+                        {formattedDate}
                       </span>
                     </li>
                   </ul>

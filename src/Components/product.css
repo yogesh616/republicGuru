@@ -58,18 +58,36 @@ cursor: pointer;
     margin-right: 10px;
 }
 
-
+  
  .h1 {
     -webkit-background-clip: text;
     background-clip: text;
-    background-color: #EC4899;
+   
+   
     color: transparent;
     margin-top: 1.75rem;
     margin-bottom: 1.25rem;
     font-size: 26px;
     line-height: 1.40;
     font-weight: 700;
+    background-color: #EC4899;
 }
+
+
+.h {
+    background: linear-gradient(#0652c5, #d4418e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-top: 1.75rem;
+    margin-bottom: 1.25rem;
+    font-size: 26px;
+    line-height: 1.40;
+    font-weight: 700;
+  }
+
+
 
 .h2 {
     background-color: #f472b6;
@@ -82,6 +100,23 @@ cursor: pointer;
     line-height: 1.40;
     font-weight: 700;
 }
+
+
+.h {
+    background: linear-gradient(#0652c5, #d4418e);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 18px;
+    line-height: 1.40;
+    font-weight: 700;
+  }
+
+
+
 
 .bg-prim-dark {
     

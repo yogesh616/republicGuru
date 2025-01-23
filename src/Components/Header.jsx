@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import logo from '../assets/logo/logo.jpeg'
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null); // Tracks which category dropdown is open
@@ -103,7 +104,19 @@ const Header = () => {
       {/* Navbar */}
       <header className="text-white  p-3 bg-[#19141a] flex items-center justify-between">
         {/* Logo */}
-        <div className="text-2xl font-bold">Republic Guru</div>
+        <div className="text-2xl font-bold">
+          {logo ? (
+             <img 
+               className="max-w-full h-auto rounded-lg" 
+               src={logo} 
+               alt="Logo" 
+               style={{ width: '100px', maxWidth: '100%' }} 
+            />
+          ) : (
+             <span>Republic Guru</span>
+          )}
+       </div>
+
 
         {/* Hamburger Menu for Mobile */}
         <button
