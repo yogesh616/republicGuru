@@ -102,7 +102,7 @@ const Header = () => {
   return (
     <div className="w-full fixed top-0 z-50 shadow-md">
       {/* Navbar */}
-      <header className="text-white  p-3 bg-[#19141a] flex items-center justify-between">
+      <header className="text-white  p-3 bg-[#19141a] bg-white flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold">
           {logo ? (
@@ -110,7 +110,7 @@ const Header = () => {
                className="max-w-full h-auto rounded-lg" 
                src={logo} 
                alt="Logo" 
-               style={{ width: '100px', maxWidth: '100%' }} 
+               style={{ width: '135px', maxWidth: '100%' }} 
             />
           ) : (
              <span>Republic Guru</span>
@@ -120,7 +120,7 @@ const Header = () => {
 
         {/* Hamburger Menu for Mobile */}
         <button
-          className="text-white text-2xl sm:hidden"
+          className=" text-black text-2xl sm:hidden"
           onClick={() => setMobileNavVisible(!mobileNavVisible)}
         >
           <i className="fa-solid fa-bars"></i>
@@ -132,7 +132,7 @@ const Header = () => {
             <input
               type="text"
               id="voice-search"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-5 p-2.5 dark:placeholder-gray-400 dark:text-white"
               placeholder="Search here"
               required
             />
@@ -149,7 +149,7 @@ const Header = () => {
         <div className="hidden md:block">
           <div className="relative store-dropdown">
             <button
-              className="flex items-center gap-2 bg-white text-black px-4 py-1 rounded-lg"
+              className="flex items-center gap-2 bg-white  text-black px-4 py-1 rounded-lg  bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white"
               onClick={() => setStoreDropdownVisible(!storeDropdownVisible)}
             >
               <img
@@ -161,8 +161,8 @@ const Header = () => {
               <span>App</span>
             </button>
             {storeDropdownVisible && (
-              <div className="absolute bg-white text-black mt-2 right-0 shadow-lg rounded-md p-2 w-44">
-                <button className="w-full flex items-center gap-2 p-2 hover:bg-gray-200 rounded-md">
+              <div className="absolute bg-white text-black mt-2 right-0 shadow-lg rounded-md p-2 w-44 ">
+                <button className="w-full flex items-center gap-2 p-2 hover:bg-gray-200 rounded-md ">
                   <img
                     width="20"
                     height="20"
@@ -264,7 +264,7 @@ const Header = () => {
             <div className="mt-6">
               <div className="relative store-dropdown">
                 <button
-                  className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg w-full"
+                  className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg w-full  bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white"
                   onClick={() => setStoreDropdownVisible(!storeDropdownVisible)}
                 >
                   <img

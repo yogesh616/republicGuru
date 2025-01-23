@@ -117,7 +117,7 @@ function Product() {
                 <a
                   rel="nofollow"
                   href="https://wct-2.com/r?data=0xF7PJiHrxzTjclI42BWv3BJ1YCHrwAKfMrYuszY9gDZzKmL02BJ5cBHvgzLHgDWLgAZzKmLyKmLe0mLmhC0rhAIOJiSjxDIWIiPvZBuT2DIOJiKLwDIWIi5etnXudn3mZnX4In1atnZiJmYiJi6iczPn2zIWIi1qtn5etnXudn3mZnXiIoIqwAZjYE&amp;afflink=https%3A%2F%2Fadidas.njih.net%2FKnzLz"
-                  className="btn btn-dark px-8 py-4 md:py-[18px] lg:w-full max-xs:w-full block text-lg bg-gradient-to-r from-[#0652c5] to-[#d4418e] "
+                  className="main-button btn btn-dark px-8 py-4 md:py-[18px] lg:w-full max-xs:w-full block bg-gradient-to-r from-[#0652c5] to-[#d4418e] "
                 >
                   Go To {selectedProduct.name}
                 </a>
