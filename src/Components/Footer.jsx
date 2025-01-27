@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div className="w-full bg-[#291022] text-white">
       {/* Top Section */}
@@ -23,8 +25,8 @@ function Footer() {
               <li>
                 <a href="/shop" className="hover:text-pink-500 transition">Shop</a>
               </li>
-              <li>
-                <a href="/about" className="hover:text-pink-500 transition">About Us</a>
+              <li onClick={() => navigate('/about')}>
+                <a  className="hover:text-pink-500 transition cursor-pointer">About Us</a>
               </li>
               <li>
                 <a href="/faq" className="hover:text-pink-500 transition">FAQs</a>
