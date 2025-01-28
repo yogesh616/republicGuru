@@ -61,3 +61,23 @@ h1 {
     max-width: 80% !important;
     margin: 20px auto 40px auto !important;
 }
+
+
+
+.linear-text-gradient {
+  
+    background: linear-gradient(to right, #FFC418, #FF6E01); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-weight: bold;
+  
+  
+}
+
+.founder-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
