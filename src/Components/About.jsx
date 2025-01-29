@@ -14,6 +14,11 @@ function About() {
   const images = [logo, 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f2c87863147935.5aa799ab2775d.jpg', makemytrip_hotel, makemytrip_holiday, PizzaHutt]
 
   const topRef = useRef(null)
+  useEffect(() => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({behavior: "smooth", block: "start"})
+    }
+  }, [])
   
   return (
     <div ref={topRef}>
