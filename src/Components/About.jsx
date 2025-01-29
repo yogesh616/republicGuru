@@ -11,7 +11,7 @@ import makemytrip_hotel from "../assets/makemytrip_hotel.jpeg"
 import makemytrip_holiday from "../assets/makemytrip_holiday.jpeg"
 
 function About() {
-  const images = [logo, 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f2c87863147935.5aa799ab2775d.jpg', makemytrip_hotel, makemytrip_holiday, PizzaHutt]
+  const images = [ 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f2c87863147935.5aa799ab2775d.jpg', logo ,Swiggy, makemytrip_holiday, Zomato]
 
   const topRef = useRef(null)
   useEffect(() => {
@@ -34,7 +34,13 @@ function About() {
       className="sm:w-full sm:h-full min-w-80  sm:top-32"
     
     >
-      <ellipse cx="500" cy="-349.2" rx="600.5" ry="680.5" fill="#282870" />
+       <defs>
+    <linearGradient id="ellipseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#0652C5" />
+      <stop offset="100%" stopColor="#D4418E" />
+    </linearGradient>
+  </defs>
+      <ellipse cx="500" cy="-349.2" rx="600.5" ry="680.5" fill="url(#ellipseGradient)" />
       <circle cx="1125" cy="-114.7" r="225" fill="#412db2" />
       <circle cx="1382.89" cy="262.57" r="26.75" fill="#ffce03" />
       <text x="30%" y="35%" textAnchor="middle" fontSize="50" fill="white" fontWeight="bold">
@@ -103,7 +109,7 @@ function About() {
             {
               images.map((image, index) => (
                 <img key={index}
-                className="max-w-full w-52 sm:w-60 h-auto rounded-lg scale-105 hover:scale-110 transition-all duration-500 cursor-pointer" 
+                className={`max-w-full w-52 sm:w-60 h-auto rounded-lg scale-105 hover:scale-110 transition-all duration-500 cursor-pointer ${index % 2 == 0 ? 'tilt-left' : 'tilt-right'}`}
                 src={image} 
                 alt="Logo" 
             />

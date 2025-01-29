@@ -108,7 +108,35 @@ function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="text-center py-4 text-sm sm:text-base text-gray-400">
+      <div className="w-full h-[1px] bg-pink-300"></div>
+      <div className="w-full flex sm:flex-row flex-col items-center justify-around py-6 text-sm sm:text-base text-gray-400">
+        <p className='sm:text-sm text-base font-semibold'>
+        © Copyright 2025 by RepublicGuru. 
+        </p>
+        <div className='flex sm:flex-row flex-col items-center sm:text-sm text-base font-semibold'>
+          <p>Passionately created and designed by ~</p>
+          <a
+            href="https://sharvinmanagement.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-500 transition-all duration-300"
+          >
+            Sharvin Management Pvt. Ltd.
+          </a>
+        </div>
+          
+        
+      </div>
+    </div>
+  );
+}
+
+export default Footer;
+
+
+/*
+
+<div className="text-center py-4 text-sm sm:text-base text-gray-400 border-t-[1px]">
         <p>
           © 2025 Republic Guru. All rights reserved. Crafted with ❤️ by{" "}
           <a
@@ -121,8 +149,4 @@ function Footer() {
           </a>
         </p>
       </div>
-    </div>
-  );
-}
-
-export default Footer;
+ */

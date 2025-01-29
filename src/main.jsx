@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import Product from './Components/Product.jsx'
 import { ProductProvider } from './Context/ProductContext.jsx'
 import About from './Components/About.jsx'
+import Terms from './Components/Terms.jsx'
+import Privacy from './Components/Privacy.jsx'
 
 createRoot(document.getElementById('root')).render(
   <ProductProvider>
@@ -14,6 +16,8 @@ createRoot(document.getElementById('root')).render(
       <Route path="/" element={<App />} />
       <Route path="/product" element={<Product />} />
       <Route path="/about" element={<About />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
     </Routes>
   </BrowserRouter>
   </ProductProvider>

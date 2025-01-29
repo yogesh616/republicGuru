@@ -5,3 +5,19 @@
     -webkit-text-fill-color: transparent;
     
   }
+
+
+  .tilt-left {
+    transform: rotate(-15deg);
+    transition: transform 0.5s ease;
+    transform-origin: bottom right;
+
+  }
+
+  .tilt-right {
+    transform: rotate(15deg); /* Adjust rotation for a right tilt */
+    transition: transform 0.5s ease;
+    transform-origin: bottom left; /* Adjust origin for a proper tilt */
+}
+
+ 
