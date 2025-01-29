@@ -5,6 +5,7 @@ import { useProduct } from '../Context/ProductContext';
 import { useNavigate } from 'react-router-dom';
 import { Bigbasket } from '../EcommerseImages/EcommerseImages'; // Ensure Bigbasket is imported correctly
 import './product.css';
+import fallback_product_image from '../assets/fallback_product_image.jpg'
 
 function Product() {
   const { selectedProduct, setSelectedProduct } = useProduct();
@@ -79,7 +80,7 @@ function Product() {
                 style={{ cursor: 'pointer' }}
                 className="lg:row-[1/span_2] lg:w-[188px] lg:h-[188px] w-[90px] h-[90px] p-3 lg:p-6 flex items-center justify-center bg-white rounded-md overflow-hidden"
               >
-                {selectedProduct?.image && (
+                {selectedProduct?.image ? (
                   <img
                     src={selectedProduct.image}
                     alt={`${selectedProduct.name} Logo`}
@@ -87,7 +88,17 @@ function Product() {
                     height="140"
                     decoding="async"
                   />
-                )}
+                ) : (
+                  <img
+                  src={fallback_product_image}
+                  alt={`${selectedProduct.name} Logo`}
+                  width="140"
+                  height="140"
+                  decoding="async"
+                />
+                )
+                
+                }
               </div>
               <h1 className="text-[18px] md:text-[32px] leading-tight text-gradient flex items-center ">
                 {selectedProduct.name} Coupons And Discount Codes | {formattedDate}
@@ -139,7 +150,7 @@ function Product() {
                       <img
                       className='rounded-md'
                         id="getCode23_image"
-                        src={selectedProduct.image}
+                        src={selectedProduct.image || fallback_product_image}
                         alt="50% Off With Email Signup"
                       />
                     </div>
@@ -186,7 +197,7 @@ function Product() {
                       <img
                       className='rounded-md'
                         id="getCode23_image"
-                        src={selectedProduct.image}
+                        src={selectedProduct.image || fallback_product_image}
                         alt="15% Off With Email Signup"
                       />
                     </div>

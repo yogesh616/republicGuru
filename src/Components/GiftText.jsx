@@ -10,7 +10,7 @@ function GiftText() {
     <div className="bg-white text-lg font-semibold w-1/2 flex flex-col items-center justify-between px-4 py-3 rounded-lg shadow-md transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl">
       <div className="flex items-center justify-between w-full">
         <p className="text-gray-800">BuyGifts Online</p>
-        <button className="bg-pink-500 px-3 py-1 rounded-full hover:bg-pink-600 transition-colors duration-300">
+        <button className="bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white px-3 py-1 rounded-full  transition-colors duration-300">
           <i className="fa-solid fa-chevron-up text-white"></i>
         </button>
       </div>
@@ -36,7 +36,7 @@ function GiftText() {
         className="bg-white text-lg font-semibold w-1/2 text-zinc-900  flex items-center justify-between px-4 py-3 rounded-lg shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
       >
         <p className="text-gray-800">{title}</p>
-        <button className="bg-pink-500 px-3 py-1 rounded-full hover:bg-pink-600 transition-colors duration-300">
+        <button className="bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white px-3 py-1 rounded-full transition-colors duration-300">
           <i className="fa-solid fa-chevron-down text-white"></i>
         </button>
       </div>

@@ -69,7 +69,7 @@ function Footer() {
               placeholder="Enter your email"
               className="px-4 py-2 rounded-l-md text-black w-full sm:w-auto"
             />
-            <button className="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-r-md transition">
+            <button className="px-6 py-2 bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white rounded-r-md transition">
               Subscribe
             </button>
           </div>
@@ -85,7 +85,7 @@ function Footer() {
           href="https://facebook.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition"
+          className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white rounded-full flex items-center justify-center transition"
         >
           <i className="fa-brands fa-facebook text-lg sm:text-xl"></i>
         </a>
@@ -93,7 +93,7 @@ function Footer() {
           href="https://linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition"
+          className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white rounded-full flex items-center justify-center transition"
         >
           <i className="fa-brands fa-linkedin-in text-lg sm:text-xl"></i>
         </a>
@@ -101,7 +101,7 @@ function Footer() {
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition"
+          className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white rounded-full flex items-center justify-center transition"
         >
           <i className="fa-brands fa-instagram text-lg sm:text-xl"></i>
         </a>

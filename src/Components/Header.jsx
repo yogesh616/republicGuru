@@ -2,6 +2,19 @@
 import React, { useState, useEffect } from "react";
 import logo from '../assets/logo/logo.jpeg'
 import { useNavigate } from "react-router-dom";
+import { Zomato, Swiggy, PizzaHutt, Kfc, EatSure, Dominos, BehrouzBiryani ,ShoppersStop } from '../FoodImages/FoodImages'
+import {
+  AmazonFresh,
+  AmazonSeoAmazonGiftCard,
+  AmazonShoppingGiftVoucher,
+  AmazonShoppingVoucher,
+  Bigbasket,
+  FlipkartGiftCard,
+  Myntra_Gift_Card,
+  Nykaa,
+  TataCliq,
+} from "../EcommerseImages/EcommerseImages.js";
+import { useProduct } from '../Context/ProductContext'
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null); // Tracks which category dropdown is open
@@ -9,6 +22,7 @@ const Header = () => {
   const [storeDropdownVisible, setStoreDropdownVisible] = useState(false); // App dropdown state
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile side drawer
   const navigate = useNavigate();
+  const { setSelectedProduct } = useProduct()
   // Categories and Subcategories Data
   const categories = [
     {
@@ -25,19 +39,54 @@ const Header = () => {
       label: "Food",
       icon: '<i class="fa-solid fa-bowl-food"></i>',
       subcategories: [
-        { name: "Swiggy", url: "#" },
-        { name: "Zomato", url: "#" },
-        { name: "Pizza Hut", url: "#" },
-        { name: "KFC", url: "#" },
+        {  name: "Swiggy",
+            offer: "Flat 8% off",
+            code: "NYK5",
+            image: Swiggy,
+             url: "#" },
+        {   name: "Zomato",
+            offer: "Flat 5% off",
+            code: "NYK5",
+            image: Zomato, 
+            url: "#" },
+        { name: "Pizza Hut",
+            offer: "Flat 6% off",
+            code: "NYK5",
+            image: PizzaHutt, 
+            url: "#" },
+        { name: "KFC",
+            offer: "Flat 2% off",
+            code: "NYK5",
+            image: Kfc, 
+            url: "#" },
       ],
     },
     {
       label: "E-Commerce",
       icon: '<i class="fa-solid fa-cart-shopping"></i>',
       subcategories: [
-        { name: "Amazon", url: "#" },
-        { name: "Flipkart", url: "#" },
-        { name: "Nykaa", url: "#" },
+        {     name: "Amazon Shopping",
+              offer: "Flat 5% off",
+              code: " ",
+              description: "5000 Discount on Aircondition",
+              referral_url:
+                "https://www.amazon.in/s?k=AC&crid=1NG3OC12U50PE&sprefix=ac%2Caps%2C254&linkCode=ll2&tag=rajvansh017-21&linkId=a06472739130ec28138e299a878bdaff&language=en_IN&ref_=as_li_ss_tl",
+              image: AmazonShoppingVoucher,
+               url: "#" },
+        {     name: "Flipkart",
+              offer: "Flat 5% off",
+              code: " ",
+              description: "",
+              referral_url: "",
+              image: FlipkartGiftCard,
+               url: "#" },
+        {      name: "Nykaa",
+              offer: "Flat 5% off",
+              code: " ",
+              description: "Get Upto 40% Off on Bestsellers",
+              referral_url: "https://bitli.in/Az3SKj9",
+              image: Nykaa,
+              url: "#" },
         { name: "AJIO", url: "#" },
       ],
     },
@@ -202,13 +251,19 @@ const Header = () => {
               </button>
               {dropdownVisible === index && (
                 <div className="absolute bg-white text-black mt-2 shadow-lg rounded-md w-48 p-2">
-                  {category.subcategories.map((sub, subIndex) => (
+                  {category.subcategories.map((product, subIndex) => (
                     <a
                       key={subIndex}
-                      href={sub.url}
+                      
                       className="block p-2 hover:bg-[#ffd1dc] rounded-md "
+
+                      onClick={() => {
+                        setSelectedProduct(product)
+                        localStorage.setItem('selectedProduct', JSON.stringify(product))
+                        navigate('/product')
+                      }}
                     >
-                      {sub.name}
+                      {product.name}
                     </a>
                   ))}
                 </div>

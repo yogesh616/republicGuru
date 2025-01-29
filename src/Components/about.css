@@ -1,0 +1,7 @@
+.custom-gradient {
+    background: #0652C5;
+    background: repeating-linear-gradient(to right, #0652C5 0%, #D4418E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  }

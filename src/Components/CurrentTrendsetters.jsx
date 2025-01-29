@@ -106,7 +106,7 @@ function CurrentTrendsetters() {
                 alt={product.name}
                 className="rounded-md w-full object-cover max-h-48 md:h-64 lg:h-72 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
-              <p className="text-white bg-pink-500 py-2 text-xs font-semibold rounded-s-lg inline-block absolute top-0 left-1 -translate-x-1.5 px-2 transition-all duration-300 ease-in-out group-hover:top-[-0.5rem] group-hover:left-[-0.5rem]">
+              <p className="bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white py-2 text-xs font-semibold rounded-s-lg inline-block absolute top-0 left-1 -translate-x-1.5 px-2 transition-all duration-300 ease-in-out group-hover:top-[-0.5rem] group-hover:left-[-0.5rem]">
                 {product.offer}
               </p>
             </div>
@@ -123,7 +123,7 @@ function CurrentTrendsetters() {
       </div>
 
       <div className=" w-full text-center my-4">
-        <button className="py-3 px-5 font-semibold rounded-lg bg-pink-500 text-white">
+        <button className="py-3 px-5 font-semibold rounded-lg bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white">
           View More
         </button>
       </div>
