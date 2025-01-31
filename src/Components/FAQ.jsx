@@ -5,6 +5,7 @@ import hero_circle from '../assets/logo/about-us-hero-circle.png';
 import logo from '../assets/logo/logo.jpeg'
 import { Zomato, Swiggy, PizzaHutt } from '../FoodImages/FoodImages';
 import './about.css'
+import { data_1, data_2, data_3, data_4, data_5 } from '../faqdata'
 
 // images
 import makemytrip_hotel from "../assets/makemytrip_hotel.jpeg"
@@ -20,20 +21,7 @@ function Faq() {
         }
       }, [])
 
-      const data = [
-        {
-         summary: "summary 1",
-         text: "text 1"     
-        },
-         {
-         summary: "summary 2",
-         text: "text 2"     
-        },
-         {
-         summary: "summary 3",
-         text: "text 3"     
-        },
-      ]
+      
 
       const [openIndex, setOpenIndex] = useState(null);
 
@@ -78,7 +66,7 @@ function Faq() {
 
     </div>
 
-    {/* About Us Description */}
+    {/* FAQs Description */}
     <div className=' mt-20 flex  gap-16 flex-col   items-center justify-between w-full'>
         <section className="w-full rounded-md   px-6 py-10 bg-[#F6F6F6] bg-[#ffd1dc] text-zinc-800">
       <h2 className="text-2xl font-bold mb-4 ">
@@ -87,7 +75,7 @@ function Faq() {
         </span>
       </h2>
       <div className="w-full">
-      {data.map((val, index) => (
+         {data_1.map((val, index) => (
         <div key={index} className="rounded-lg p-4">
           <button
             onClick={() => toggleDetails(index)}
@@ -102,21 +90,146 @@ function Faq() {
           </button>
           <div
             className={`transition-all duration-500 overflow-hidden ${
-              openIndex === index ? "max-h-96 opacity-100 py-2" : "max-h-0 opacity-0"
+              openIndex === index ? "max-h-full opacity-100 py-2" : "max-h-0 opacity-0"
             }`}
           >
-            <p className="text-gray-700">{val.text}</p>
+            <p className="text-gray-700 whitespace-pre-line">{val.text}</p>
           </div>
         </div>
-      ))}
-    </div>
+          ))}
+      </div>
 
+      <h2 className="text-2xl font-bold mb-4 ">
+        <span className='custom-gradient'>
+           Cashback Facts 
+        </span>
+      </h2>
+
+      <div className="w-full">
+         {data_2.map((val, index) => (
+        <div key={index} className="rounded-lg p-4">
+          <button
+            onClick={() => toggleDetails(index)}
+            className="w-full text-left font-semibold text-lg bg-gray-100 py-3 px-4 text-zinc-500 flex justify-between items-center"
+          >
+            {val.summary}
+            <span
+              
+            >
+              <i className={`text-gray-600 fa-solid ${openIndex === index ? 'fa-caret-up' : "fa-caret-down"}`}></i>
+            </span>
+          </button>
+          <div
+            className={`transition-all duration-500 overflow-hidden ${
+              openIndex === index ? "max-h-full opacity-100 py-2" : "max-h-0 opacity-0"
+            }`}
+          >
+            <p className="text-gray-700 whitespace-pre-line">{val.text}</p>
+          </div>
+        </div>
+          ))}
+      </div>
+
+      <h2 className="text-2xl font-bold mb-4 ">
+        <span className='custom-gradient'>
+           Tracking
+        </span>
+      </h2>
+
+
+      <div className="w-full">
+         {data_3.map((val, index) => (
+        <div key={index} className="rounded-lg p-4">
+          <button
+            onClick={() => toggleDetails(index)}
+            className="w-full text-left font-semibold text-lg bg-gray-100 py-3 px-4 text-zinc-500 flex justify-between items-center"
+          >
+            {val.summary}
+            <span
+              
+            >
+              <i className={`text-gray-600 fa-solid ${openIndex === index ? 'fa-caret-up' : "fa-caret-down"}`}></i>
+            </span>
+          </button>
+          <div
+            className={`transition-all duration-500 overflow-hidden ${
+              openIndex === index ? "max-h-full opacity-100 py-2" : "max-h-0 opacity-0"
+            }`}
+          >
+            <p className="text-gray-700 whitespace-pre-line">{val.text}</p>
+          </div>
+        </div>
+          ))}
+      </div>
+
+
+      <h2 className="text-2xl font-bold mb-4 ">
+        <span className='custom-gradient'>
+           Cashback Issues
+        </span>
+      </h2>
+
+      <div className="w-full">
+         {data_4.map((val, index) => (
+        <div key={index} className="rounded-lg p-4">
+          <button
+            onClick={() => toggleDetails(index)}
+            className="w-full text-left font-semibold text-lg bg-gray-100 py-3 px-4 text-zinc-500 flex justify-between items-center"
+          >
+            {val.summary}
+            <span
+              
+            >
+              <i className={`text-gray-600 fa-solid ${openIndex === index ? 'fa-caret-up' : "fa-caret-down"}`}></i>
+            </span>
+          </button>
+          <div
+            className={`transition-all duration-500 overflow-hidden ${
+              openIndex === index ? "max-h-full opacity-100 py-2" : "max-h-0 opacity-0"
+            }`}
+          >
+            <p className="text-gray-700 whitespace-pre-line">{val.text}</p>
+          </div>
+        </div>
+          ))}
+      </div>
+
+      <h2 className="text-2xl font-bold mb-4 ">
+        <span className='custom-gradient'>
+           Withdrawal
+        </span>
+      </h2>
+
+      <div className="w-full">
+         {data_5.map((val, index) => (
+        <div key={index} className="rounded-lg p-4">
+          <button
+            onClick={() => toggleDetails(index)}
+            className="w-full text-left font-semibold text-lg bg-gray-100 py-3 px-4 text-zinc-500 flex justify-between items-center"
+          >
+            {val.summary}
+            <span
+              
+            >
+              <i className={`text-gray-600 fa-solid ${openIndex === index ? 'fa-caret-up' : "fa-caret-down"}`}></i>
+            </span>
+          </button>
+          <div
+            className={`transition-all duration-500 overflow-hidden ${
+              openIndex === index ? "max-h-full opacity-100 py-2" : "max-h-0 opacity-0"
+            }`}
+          >
+            <p className="text-gray-700 whitespace-pre-line">{val.text}</p>
+          </div>
+        </div>
+          ))}
+      </div>
 
 
 
       
         </section>
-        <div className="w-full overflow-x-auto overflow-y-hidden">
+        <div className="hidden w-full overflow-x-auto overflow-y-hidden">
   <div className="flex items-center justify-start gap-10 sm:gap-20 py-4 px-4">
     {images.map((image, index) => (
       <img

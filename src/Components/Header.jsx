@@ -13,6 +13,7 @@ import {
   Myntra_Gift_Card,
   Nykaa,
   TataCliq,
+  AjioCard
 } from "../EcommerseImages/EcommerseImages.js";
 import { useProduct } from '../Context/ProductContext'
 
@@ -150,7 +151,10 @@ const Header = () => {
               referral_url: "https://bitli.in/Az3SKj9",
               image: Nykaa,
               url: "#" },
-        { name: "AJIO", url: "#" },
+        { name: "AJIO",
+          image: AjioCard,
+          url: "#"
+         },
       ],
     },
     {
@@ -219,7 +223,7 @@ const Header = () => {
 
   // Function to hide the dropdown with a delay of 3 seconds
   const handleMouseLeave = () => {
-    const timeout = setTimeout(() => setDropdownVisible(null), 1200); // Set delay of 3 seconds
+    const timeout = setTimeout(() => setDropdownVisible(null), 2500); // Set delay of 3 seconds
     setDropdownTimeout(timeout); // Save timeout so we can clear it if needed
   };
 
@@ -348,7 +352,7 @@ const Header = () => {
                 {category.label}
               </button>
               {dropdownVisible === index && (
-                <div className="absolute bg-white text-black mt-2 shadow-lg rounded-md w-48 p-2 max-h-80 overflow-y-auto hide-scrollbar">
+                <div className="absolute bg-white text-black mt-2 shadow-lg rounded-md w-48 ps-2 pb-2 max-h-80 overflow-y-auto hide-scrollbar">
                   {category.subcategories.map((product, subIndex) => (
                     <a
                       key={subIndex}
@@ -361,7 +365,7 @@ const Header = () => {
                         navigate('/product')
                       }}
                     >
-                      {product.name}
+                      {product.name} 
                     </a>
                   ))}
                 </div>
@@ -372,6 +376,7 @@ const Header = () => {
       </div>
 
        {/* Search Results */}
+       <div className="absolute sm:top-16 left-1/2 w-full -translate-x-1/2 ">
        <div className="flex justify-around sm:ps-36 w-full items-center">
         <ul className="bg-gray-100 rounded-md min-w-[334px] sm:min-w-[450px] max-h-60 overflow-y-auto hide-scrollbar">
           {searchedData.length > 0 &&
@@ -390,7 +395,8 @@ const Header = () => {
               </li>
             ))}
         </ul>
-      </div>
+       </div>
+       </div>
 
       {/* Mobile Drawer */}
       <div
@@ -455,7 +461,7 @@ const Header = () => {
                           setDropdownVisible(false)
                         }}
                       >
-                        {sub.name}
+                        {sub.name} 
                       </a>
                     ))}
                   </div>

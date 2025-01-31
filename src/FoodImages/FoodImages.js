@@ -7,4 +7,5 @@ import EatSure from './Eat-Sure.png'
 import BehrouzBiryani from './BehrouzBiryani.png'
 import ShoppersStop from './ShoppersStop.png'
 
+
 export { Zomato, Swiggy, PizzaHutt, Kfc, Dominos, EatSure, BehrouzBiryani, ShoppersStop }
