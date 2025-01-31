@@ -5,6 +5,7 @@ import hero_circle from '../assets/logo/about-us-hero-circle.png';
 import logo from '../assets/logo/logo.jpeg'
 import { Zomato, Swiggy, PizzaHutt } from '../FoodImages/FoodImages';
 import './about.css'
+import HugoBoss from '../assets/HugoBoss.png'
 
 // images
 import makemytrip_hotel from "../assets/makemytrip_hotel.jpeg"
@@ -52,7 +53,20 @@ function About() {
         <tspan x="33%" dy="1.5em">and sounds like an ecstatic “Thank you!”</tspan>
       </text>
     </svg>
-    <img className="absolute top-10 right-10 sm:top-44 sm:right-28 w-40 sm:w-48" src={hero_circle} alt="Hero Circle" />
+    {/* Fliping Card */}
+    <div className='absolute top-28 right-1/2 translate-x-1/2 sm:top-44 sm:right-60'>
+       <div className="card w-40 sm:w-72 sm:h-52">
+  <div className="card-inner">
+    <div className="card-front">
+    <img className=" w-40 sm:w-52 scale-150 rounded-xl" src={HugoBoss} alt="Hero Circle" />
+    </div>
+    <div className="card-back">
+    <img className=" w-40 sm:w-52 scale-150 rounded-xl" src={hero_circle} alt="Hero Circle" />
+    </div>
+  </div>
+       </div>
+    </div>
+   
   </div>
 </div>
 
