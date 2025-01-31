@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from '../assets/logo/logo.jpeg'
 import { useNavigate } from "react-router-dom";
 import { Zomato, Swiggy, PizzaHutt, Kfc, EatSure, Dominos, BehrouzBiryani ,ShoppersStop } from '../FoodImages/FoodImages'
@@ -22,8 +22,37 @@ const Header = () => {
   const [storeDropdownVisible, setStoreDropdownVisible] = useState(false); // App dropdown state
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile side drawer
   const navigate = useNavigate();
-  const { setSelectedProduct } = useProduct()
+  const { setSelectedProduct } = useProduct();
+
+  // Product Searching Function
+  const [ searchQuery, setSearchQuery ] = useState('');
+   
+  const [searchedData, setSearchedData] = useState([]);
+   function searchProduct(query) {
+      if (!query.trim()) {
+        setSearchedData([]); // Clear search results if query is empty
+        return;
+      }
+      const results = categories.flatMap((category) =>
+        category.subcategories.filter((sub) =>
+          sub.name.toLowerCase().includes(query.toLowerCase())
+        )
+      );
+      setSearchedData(results);
+    }
+  
+    // Debounce search (runs after 500ms delay)
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        searchProduct(searchQuery);
+      }, 500);
+      return () => clearTimeout(timer);
+    }, [searchQuery]);
+  
+
+
   // Categories and Subcategories Data
+  
   const categories = [
     {
       label: "Education",
@@ -33,6 +62,8 @@ const Header = () => {
         { name: "Coursera", url: "#" },
         { name: "Udemy", url: "#" },
         { name: "Skill Share", url: "#" },
+        { name: "SimpliLearn", url: "#" },
+        { name: "growthschool.io", url: "#"}
       ],
     },
     {
@@ -43,22 +74,54 @@ const Header = () => {
             offer: "Flat 8% off",
             code: "NYK5",
             image: Swiggy,
-             url: "#" },
+             url: "#"
+        },
         {   name: "Zomato",
             offer: "Flat 5% off",
             code: "NYK5",
             image: Zomato, 
-            url: "#" },
-        { name: "Pizza Hut",
+            url: "#" 
+        },
+        {   name: "Pizza Hut",
             offer: "Flat 6% off",
             code: "NYK5",
             image: PizzaHutt, 
-            url: "#" },
-        { name: "KFC",
+            url: "#" 
+        },
+        {   name: "KFC",
             offer: "Flat 2% off",
             code: "NYK5",
             image: Kfc, 
-            url: "#" },
+            url: "#" 
+        },
+        {
+          name: "Burger King",
+            offer: "Flat 7% off",
+            code: "NYK5",
+            
+            url: "#"
+        },
+        {
+            name: "Dominos",
+            offer: "Flat 2% off",
+            code: "NYK5",
+            image: Dominos,
+            url: "#"
+        },
+        {
+            name: "Eat Sure	",
+            offer: "Flat 5% off",
+            code: "NYK5",
+            image: EatSure,
+            url: "#"
+        },
+        {
+            name: "Behrouz Biryani",
+            offer: "Flat 5% off",
+            code: "NYK5",
+            image: BehrouzBiryani,
+            url: "#"
+        }
       ],
     },
     {
@@ -97,6 +160,7 @@ const Header = () => {
         { name: "The Body Shop", url: "#" },
         { name: "Mama Earth", url: "#" },
         { name: "The Man Company", url: "#" },
+        { name: "Bombay Shaving Company", url: "#" },
         { name: "Wow Skin Care", url: "#" },
       ],
     },
@@ -106,8 +170,21 @@ const Header = () => {
       subcategories: [
         { name: "Binance", url: "#" },
         { name: "KuCoin", url: "#" },
+        { name: "MEXC", url: "#" },
+        { name: "BingX", url: "#" },
+        { name: "Bitget", url: "#" },
+        { name: "Weex", url: "#" },
+        { name: "Bitvavo", url: "#" },
+        { name: "QX Broker", url: "#" },
+        { name: "Alpha Capital", url: "#" },
+        { name: "Maven Trading", url: "#" },
+        { name: "Funder Pro", url: "#" },
+        { name: "Safe Pal", url: "#" },
         { name: "Pocket Option", url: "#" },
+        { name: "E8", url: "#" },
         { name: "Phemex", url: "#" },
+        
+        
       ],
     },
     {
@@ -118,6 +195,10 @@ const Header = () => {
         { name: "WildCraft", url: "#" },
         { name: "The Souled Store", url: "#" },
         { name: "XYXX", url: "#" },
+        { name: "SareesKart", url: "#" },
+        { name: "Ola", url: "#" },
+        { name: "Uber", url: "#" },
+      
       ],
     },
     {
@@ -138,7 +219,7 @@ const Header = () => {
 
   // Function to hide the dropdown with a delay of 3 seconds
   const handleMouseLeave = () => {
-    const timeout = setTimeout(() => setDropdownVisible(null), 1000); // Set delay of 3 seconds
+    const timeout = setTimeout(() => setDropdownVisible(null), 1200); // Set delay of 3 seconds
     setDropdownTimeout(timeout); // Save timeout so we can clear it if needed
   };
 
@@ -149,10 +230,20 @@ const Header = () => {
     };
   }, [dropdownTimeout]);
 
+
+
+
+  // offcanvas closing]g
+
+  const closeBtn = useRef(null);
+  const closeMenu = () => {
+    closeBtn.current.click();
+  };
+
   return (
     <div className="w-full fixed top-0 z-50 shadow-md">
       {/* Navbar */}
-      <header className="text-white  p-3 bg-[#19141a] bg-white flex items-center justify-between">
+      <header className="relative text-white px-3  py-[1px] bg-[#19141a] bg-white flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold cursor-pointer"
         onClick={() => navigate('/')}>
@@ -183,9 +274,12 @@ const Header = () => {
             <input
               type="text"
               id="voice-search"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-5 p-2.5 dark:placeholder-gray-400 dark:text-white"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-5 p-2.5 "
               placeholder="Search here"
               required
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+             
             />
             <button
               type="button"
@@ -196,11 +290,15 @@ const Header = () => {
           </div>
         </div>
 
+      
+        
+        
+
         {/* App Button */}
         <div className="hidden md:block">
           <div className="relative store-dropdown">
             <button
-              className="flex items-center gap-2 bg-white  text-black px-4 py-1 rounded-lg  bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white"
+              className="hidden flex items-center gap-2 bg-white  text-black px-4 py-1 rounded-lg  bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white"
               onClick={() => setStoreDropdownVisible(!storeDropdownVisible)}
             >
               <img
@@ -250,12 +348,12 @@ const Header = () => {
                 {category.label}
               </button>
               {dropdownVisible === index && (
-                <div className="absolute bg-white text-black mt-2 shadow-lg rounded-md w-48 p-2">
+                <div className="absolute bg-white text-black mt-2 shadow-lg rounded-md w-48 p-2 max-h-80 overflow-y-auto hide-scrollbar">
                   {category.subcategories.map((product, subIndex) => (
                     <a
                       key={subIndex}
                       
-                      className="block p-2 hover:bg-[#ffd1dc] rounded-md "
+                      className="block p-2 hover:bg-[#ffd1dc] rounded-md cursor-pointer"
 
                       onClick={() => {
                         setSelectedProduct(product)
@@ -273,6 +371,27 @@ const Header = () => {
         </div>
       </div>
 
+       {/* Search Results */}
+       <div className="flex justify-around sm:ps-36 w-full items-center">
+        <ul className="bg-gray-100 rounded-md min-w-[334px] sm:min-w-[450px] max-h-60 overflow-y-auto hide-scrollbar">
+          {searchedData.length > 0 &&
+            searchedData.map((product, index) => (
+              <li
+                key={index}
+                className="py-2 px-4 hover:bg-gray-300 border-b cursor-pointer"
+                onClick={() => {
+                    setSelectedProduct(product)
+                    localStorage.setItem('selectedProduct', JSON.stringify(product))
+                    navigate('/product')
+                    setSearchedData([])
+                  }}
+              >
+                <h3>{product.name}</h3>
+              </li>
+            ))}
+        </ul>
+      </div>
+
       {/* Mobile Drawer */}
       <div
         className={`fixed top-0 left-0 h-full bg-[#19141a] text-white w-[75%] transform ${
@@ -281,7 +400,7 @@ const Header = () => {
       >
         <div className="p-4">
           {/* Close Button */}
-          <button
+          <button ref={closeBtn}
             className="text-white text-2xl mb-4"
             onClick={() => setMobileNavVisible(false)}
           >
@@ -290,6 +409,26 @@ const Header = () => {
 
           {/* Mobile Navigation Links */}
           <nav>
+          <div className="hidden w-full">
+          <div className="relative">
+            <input
+              type="text"
+              id="voice-search"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-5 p-2.5 "
+              placeholder="Search here"
+              required
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+             
+            />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <i className="text-gray-400 fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
             {/* Categories with Subcategories */}
             {categories.map((category, index) => (
               <div key={index} className="mb-4">
@@ -308,6 +447,13 @@ const Header = () => {
                         key={subIndex}
                         href={sub.url}
                         className="block hover:underline"
+                        onClick={() => {
+                          setSelectedProduct(sub)
+                          localStorage.setItem('selectedProduct', JSON.stringify(sub))
+                          navigate('/product')
+                          closeMenu()
+                          setDropdownVisible(false)
+                        }}
                       >
                         {sub.name}
                       </a>
@@ -319,7 +465,7 @@ const Header = () => {
 
             {/* App Button for Mobile */}
             <div className="mt-6">
-              <div className="relative store-dropdown">
+              <div className="relative store-dropdown hidden ">
                 <button
                   className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg w-full  bg-gradient-to-r from-[#0652c5] to-[#d4418e] text-white"
                   onClick={() => setStoreDropdownVisible(!storeDropdownVisible)}

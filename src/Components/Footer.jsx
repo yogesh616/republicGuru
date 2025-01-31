@@ -41,10 +41,10 @@ function Footer() {
           <div>
             <h2 className="text-lg sm:text-xl font-semibold">Support</h2>
             <ul className="mt-4 space-y-2">
-              <li>
+              <li className='hidden'>
                 <a href="/shipping" className="hover:text-pink-500 transition">Shipping & Delivery</a>
               </li>
-              <li>
+              <li className='hidden'>
                 <a href="/returns" className="hover:text-pink-500 transition">Returns & Refunds</a>
               </li>
               <li>

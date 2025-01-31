@@ -8,55 +8,68 @@ import './product.css';
 import fallback_product_image from '../assets/fallback_product_image.jpg'
 
 function Product() {
-  const { selectedProduct, setSelectedProduct } = useProduct();
   const navigate = useNavigate();
+  const { selectedProduct, setSelectedProduct } = useProduct();
+  
   const [formattedDate, setFormattedDate] = useState(null);
+  const [votes, setVotes] = useState(null);
+  const [ratings, setRatings] = useState(null);
+  const topRef = useRef(null);
+  const productRef = useRef(null);
 
-  useEffect(() => {
-    const today = new Date();
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    setFormattedDate(today.toLocaleDateString('en-US', options));
-    
-  }, []);
-
+  // Fetch selected product from localStorage ONLY on first render
   useEffect(() => {
     if (!selectedProduct) {
       const storedProduct = localStorage.getItem('selectedProduct');
       if (storedProduct) {
-        setSelectedProduct(JSON.parse(storedProduct));
+        const parsedProduct = JSON.parse(storedProduct);
+        setSelectedProduct(parsedProduct);
+        console.log('Getting data from localStorage:', parsedProduct);
       } else {
+        console.log('No product found in localStorage, redirecting...');
         navigate('/');
       }
-    } else {
-      localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
     }
-  }, [selectedProduct, setSelectedProduct, navigate]);
+  }, []); // Only runs once on mount
 
-   
+  // Update localStorage ONLY when selectedProduct is NOT null
+  useEffect(() => {
+    if (selectedProduct) {
+      localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+      console.log('Setting data to localStorage:', selectedProduct);
+    }
+  }, [selectedProduct]);
 
-  
-  
-  const topRef = useRef(null);
-  const productRef = useRef(null);
+  // Generate random votes & ratings once
+  useEffect(() => {
+    setVotes(Math.floor(Math.random() * 4000));
+    setRatings((Math.random() * 1.5 + 3.5).toFixed(1)); // Ratings between 3.5 and 5
+  }, []);
+
+  // Format date on mount
+  useEffect(() => {
+    const today = new Date();
+    setFormattedDate(today.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }));
+  }, []);
+
+  // Scroll to top when the page loads
   useEffect(() => {
     if (topRef.current) {
-      // Scroll to the top-level div when the page loads
       topRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
 
+  // Scroll to product section when selectedProduct is set
   useEffect(() => {
-    if (productRef.current && selectedProduct) {
+    if (productRef.current) {
       productRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [selectedProduct]);
 
-
-
+  // If no product is selected, return null to prevent errors
   if (!selectedProduct) {
-    return null; // Or display a loading spinner/message
+    return null;
   }
-
   return (
     <div  ref={topRef} className="flex flex-col min-h-screen w-full">
       <Header />
@@ -87,6 +100,7 @@ function Product() {
                     width="140"
                     height="140"
                     decoding="async"
+                    className='scale-150'
                   />
                 ) : (
                   <img
@@ -272,9 +286,9 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
 
 <p>If you have your own {selectedProduct.name} promo code, you <a href="https://forms.gle/xuk9KFyfCVzW4MCV9" rel="nofollow">can submit your code here</a>.</p>
 
-<h2 className="h1"><strong>If You Like {selectedProduct.name} Coupons, Check Out These Similar Offers</strong></h2>
+<h2 className="h1 hidden"><strong>If You Like {selectedProduct.name} Coupons, Check Out These Similar Offers</strong></h2>
 
-<ul>
+<ul className='hidden'>
 <li><a href="https://shipthedeal.com/store/686-coupon" rel="dofollow">686: 15% OFF 686 - Latest Deals</a></li>
 <li><a href="https://shipthedeal.com/store/theriversedgecom-coupon" rel="dofollow">TheRiversEdge.com: 15% OFF TheRiversEdge.com - Latest Deals</a></li>
 <li><a href="https://shipthedeal.com/store/appaman-coupon" rel="dofollow">appaman: 15% OFF appaman - Latest Deals</a></li>
@@ -354,10 +368,10 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                 {/* Rating Div */}
                 <div className="border border-gray-200 rounded-2xl bg-white py-6 px-7">
                   <div className="text-lg font-medium text-pink-500">
-                    You rated {selectedProduct.name}!
+                    {selectedProduct.name} Ratings!
                   </div>
                   <div className="text-lg opacity-80 my-2">
-                    Average rating: 2.4 of 5
+                    Average rating: {ratings} of 5
                   </div>
                   <div className="flex justify-between">
                     <div className="flex gap-1">
@@ -370,7 +384,7 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                         alt=""
                       />
                       <img
-                        src=" https://shipthedeal.com/build/assets/nostar.8815b900.svg "
+                        src=" https://shipthedeal.com/build/assets/star.3fb9470e.svg "
                         alt=""
                       />
                       <img
@@ -382,7 +396,7 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                         alt=""
                       />
                     </div>
-                    <span className="text-lg opacity-80">(5 votes)</span>
+                    <span className="text-lg opacity-80">({votes} votes)</span>
                   </div>
                 </div>
                 {/* Submit Coupon Div will be hidden */}
@@ -407,16 +421,18 @@ Next, you’ll want to figure out which coupon you want to apply. We recommend t
                   <ul>
                     <li className="border-b border-gray-200 last:border-b-0 flex justify-between py-[17px]">
                       Total Offers
-                      <span className="text-[#05205C] font-medium">1</span>
+                      <span className="text-[#05205C] font-medium">3</span>
                     </li>
-                    <li className="border-b border-gray-200 last:border-b-0 flex justify-between py-[17px]">
+                    {/* removing on client req. */}
+                    <li className="hidden border-b border-gray-200 last:border-b-0 flex justify-between py-[17px]">
                       Promotion
                       <span className="text-[#05205C] font-medium">1</span>
                     </li>
                   </ul>
                 </div>
                 {/* Discount */}
-                <div className="border border-gray-200 rounded-2xl bg-white py-4 px-7">
+                 {/* removing on client req. */}
+                <div className="hidden border border-gray-200 rounded-2xl bg-white py-4 px-7">
                   <ul>
                     <li className="flex justify-between py-[13px]">
                       <span>💰 Average saving:</span>
