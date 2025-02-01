@@ -8,6 +8,6 @@ import Myntra_Gift_Card from './Myntra_Gift_Card.png'
 import Nykaa from './Nykaa.png'
 import TataCliq from './TataCliq.png'
 
-const AjioCard = 'https://uploads-ssl.webflow.com/63a40b5d0bd7064cf2860235/63cfedb583e3201d9e5334b8_Ajio-Logo.png'
+const AjioCard = 'https://s1.mzstatic.com/us/r30/Purple4/v4/28/e5/bb/28e5bb0f-d387-ec8f-6b76-d382d9d4be38/mzl.zklsoqvq.jpg'
 
 export { AmazonFresh, AmazonSeoAmazonGiftCard, AmazonShoppingGiftVoucher, AmazonShoppingVoucher, Bigbasket, FlipkartGiftCard, Myntra_Gift_Card, Nykaa, TataCliq, AjioCard}
